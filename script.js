@@ -1,15 +1,20 @@
 var api_key = "9803eb11";
+var page_number = 1;
+var navigation_buttons = false;
 
 function search() {
     var movie_title = document.getElementById("search-bar").value;
-    get_movie_data(movie_title);
+
+    document.querySelectorAll('.movie_result').forEach(e => e.remove());
+
+    fetch_results(movie_title);
 }
 
-function get_movie_data(movie_title) {
+function fetch_results(movie_title) {
     var formatted_movie_title = movie_title.replace(" ", "+");
-    var api_url = `http://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&&apikey=${api_key}`;
+    var api_url = `http://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&apikey=${api_key}`;
 
-	fetch(api_url)
+    fetch(api_url)
 		.then(function(response) {
 			return response.json();
 		})
@@ -25,18 +30,41 @@ function get_movie_data(movie_title) {
  * updates the page with the search results contained within that JSON object.
  */
 function update_page(data) {
+        console.log(data);
 	var parent = document.getElementById("search-results");
 	var list_element;
-	var clickable_element;
+        var anchor;
+
+        document.getElementById("page_number").innerHTML = `Page ${page_number}`;
+        
+        if (data.totalResults > 10 && !navigation_buttons) {
+            document.getElementById("prev_button").style.visibility = "visible";
+            document.getElementById("next_button").style.visibility = "visible";
+
+            navigation_buttons = true;
+        }
 	
 	for (var key in data.Search) {
 		list_element = document.createElement("li");
-
-		clickable_element = document.createElement("a");
-		clickable_element.href = `movie_details.html?${data.Search[key].Title.replace(" ", "+")}`
-		clickable_element.innerHTML = `${data.Search[key].Title} (${data.Search[key].Year})`
+                list_element.className = "movie_result";
+                anchor = `<a href="#" onclick="redirect(\'${data.Search[key].Title}\')"> ${data.Search[key].Title} (${data.Search[key].Year}) </a>`;
 
 		parent.appendChild(list_element);
-		list_element.appendChild(clickable_element);
+		list_element.insertAdjacentHTML("beforeend", anchor);
 	}
+}
+
+function change_page(direction) {
+    if (direction == 0 && page_number > 1) {
+        page_number--;
+    } else if (direction == 1 && page_number < 100) {
+        page_number++;
+    }
+
+    search();
+}
+
+function redirect(title) {
+     sessionStorage.setItem("movie_title", title);
+     window.location.href = "movie_details.html";
 }

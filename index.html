@@ -2,23 +2,31 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="style.css">
+                <meta charset="UTF-8">
 		<title>Movie Search</title>
 	</head>
 
 	<body>
 		<h1>Movie Search</h1>
-		<p>Get information about your favorite movies 
+		<p id="flavor">Get information about your favorite movies 
 
-		<div>
+		<div id="input">
 			<input id="search-bar" type="text" placeholder="Title">
 		</div>
 
-		<button type="button" id="search-button" onclick="search()">
-			Search
-		</button>
+                <div id="dbutton">
+		    <button type="button" id="search-button" onclick="search()">Search</button>
+                </div>
 
 		<ol id="search-results">
 		</ol>
+
+                <p id="page_number">
+
+                <div id="navigation">
+                    <button type="button" style="visibility:hidden" id="prev_button" onclick="change_page('0')">Prev</button>
+                    <button type="button" style="visibility:hidden" id="next_button" onclick="change_page('1')">Next</button>
+                </div>
 	</body>
 
 	<script src="script.js"></script>

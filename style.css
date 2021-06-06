@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
 h1 {
-	color: #268bd2;
+    /* color: #3500D3; */
+    color: #CC241D;
+
+    text-align: center;
+
+    font-family: Dosis;
+    font-size: 70px;
+}
+
+h2 {
+    color: red;
+    font-family: Dosis;
+}
+
+p {
+    display: block;
+    font-family: Dosis;
+    color: #EBDBB2;
+    margin-left: 30px;
+}
+
+body {
+    background-color: #282828;
+}
+
+li {
+    color: #98971a;
+}
+
+a {
+    color: #EBDBB2;
+}
+a:visited {
+    color: #EBDBB2;
+}
+
+#poster {
+    vertical-align: middle;
+    float: left;
+
+    padding-left: 20px;
+}
+
+#flavor {
+    text-align: center;
+}
+
+#input {
+    text-align: center;
+}
+
+#dbutton {
+    margin-top: 20px;
+    text-align: center;
 }
