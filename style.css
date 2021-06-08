@@ -1,58 +1,98 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis');
-
-h1 {
-    /* color: #3500D3; */
-    color: #CC241D;
-
-    text-align: center;
-
-    font-family: Dosis;
-    font-size: 70px;
+* {
+	font-family: Arial;
 }
 
-h2 {
-    color: red;
-    font-family: Dosis;
-}
-
-p {
-    display: block;
-    font-family: Dosis;
-    color: #EBDBB2;
-    margin-left: 30px;
-}
-
-body {
-    background-color: #282828;
+a, a:visited, a:hover {
+	color: white;
 }
 
 li {
-    color: #98971a;
+	color: green;
+	margin: 0;
+	padding 0;
+	list-style-position: inside;
 }
 
-a {
-    color: #EBDBB2;
-}
-a:visited {
-    color: #EBDBB2;
+ol {
+	padding: 0;
 }
 
-#poster {
-    vertical-align: middle;
-    float: left;
 
-    padding-left: 20px;
+body {
+	background-color: black;
+	padding: 50px;
 }
 
-#flavor {
-    text-align: center;
+h1 {
+	text-align: center;
+	color: #20C20E;
 }
 
-#input {
-    text-align: center;
+p {
+	color: #A9A9A9;
 }
 
-#dbutton {
-    margin-top: 20px;
-    text-align: center;
+img {
+	display: block;
+	margin: auto;
+}
+
+button {
+	background-color: #282828;
+	color: white;
+
+	border: 1px solid white;
+	border-radius: 5px;
+
+	height: 25px;
+}
+
+.input {
+	text-align: center;
+}
+
+.top {
+	text-align: center;
+}
+
+.top h4 {
+	color: #a9a9a9;
+}
+
+.bottom {
+	text-align: center;
+}
+
+.bottom h2 {
+	color: #20C20E;
+}
+
+.more_options {
+	text-align: right;
+}
+
+.more_options h2 {
+	color: #20C20E;
+}
+
+#search_box {
+	text-align: center;
+
+	border: 1px solid black;
+	border-radius: 7px;
+
+	height: 25px;
+}
+
+#results_header {
+	color: #20C20E;
+}
+
+#logo {
+	background: gray;
+	width: 75px;
+	height: auto;
+
+	border: 1px solid white;
+	border-radius: 100px;
 }

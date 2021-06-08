@@ -3,22 +3,33 @@
 	<head>
 		<link rel="stylesheet" href="style.css">
                 <meta charset="UTF-8">
+		<script src="script.js"></script>
+
 		<title>Movie Search</title>
 	</head>
 
 	<body>
-		<h1>Movie Search</h1>
-		<p id="flavor">Get information about your favorite movies 
-
-		<div id="input">
-			<input id="search-bar" type="text" placeholder="Title">
+		<div class="top">
+			<img id="logo" src="./logo.png">
+			<h1>Movie Search</h1>
+			<p class="flavor">Get information about your favorite movies 
 		</div>
 
-                <div id="dbutton">
-		    <button type="button" id="search-button" onclick="search()">Search</button>
+		<div class="input">
+		    <input id="search_box" type="text" placeholder="Movie Title">
+		    <button type="button" id="search_button" onclick="search()">Search</button>
                 </div>
 
-		<ol id="search-results">
+		<div class="more_options">
+		    <h2>Refine search</h2>
+		    
+		    <input id="year_box" type="text" placeholder="Year (i.e. 2012)">
+		    <br>
+		    <button type="button" id="apply_button" onclick="apply()">Apply</button>
+		</div>
+
+		<h2 id="results_header" style="visibility:hidden">Results</h2>
+		<ol id="search_results">
 		</ol>
 
                 <p id="page_number">
@@ -29,5 +40,4 @@
                 </div>
 	</body>
 
-	<script src="script.js"></script>
 </html>

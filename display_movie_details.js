@@ -34,14 +34,14 @@ async function display_details() {
     var movie_information = await get_movie_data(movie_name);
 
     console.log(movie_information);
+    document.getElementById("details").innerHTML = 
+		`${movie_information.Released} | 
+		 ${movie_information.Runtime} | 
+		 ${movie_information.Genre}`;
+    document.getElementById("director").innerHTML = `Directed by ${movie_information.Director}`;
 
     document.title = movie_information.Title;
     document.getElementById("movie_title").innerHTML = movie_information.Title;
     document.getElementById("poster").src = movie_information.Poster;
     document.getElementById("plot").innerHTML = movie_information.Plot;
-    document.getElementById("release_date").innerHTML = movie_information.Released;
-    document.getElementById("runtime").innerHTML = movie_information.Runtime;
-    document.getElementById("genre").innerHTML = movie_information.Genre;
-    document.getElementById("director").innerHTML = movie_information.Director;
 }
-
