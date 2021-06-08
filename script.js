@@ -14,10 +14,10 @@ function search() {
 
 function fetch_results(movie_title) {
     var formatted_movie_title = movie_title.replace(" ", "+");
-    var api_url = `http://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&apikey=${api_key}`;
+    var api_url = `https://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&apikey=${api_key}`;
     
     if (year != -1) {
-        api_url = `http://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&y=${year}&apikey=${api_key}`;
+        api_url = `https://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&y=${year}&apikey=${api_key}`;
 
     }
 

@@ -9,7 +9,7 @@ window.onload = display_details;
 */
 function get_movie_data(title) {
     var formatted_movie_title = title.replace(" ", "+");
-    var api_url = `http://www.omdbapi.com/` +
+    var api_url = `https://www.omdbapi.com/` +
         `?t=${formatted_movie_title}&type=movie&plot=full&apikey=${api_key}`;
 
     var json_data = fetch(api_url)
