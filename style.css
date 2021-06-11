@@ -108,12 +108,13 @@ input {
     }
 
     button {
-        height: 50px;
+        height: 65px;
         width: auto;
     }
 
     input {
-        height: 50px;
+        height: 65px;
+        width: auto;
     }
 
     ol {
@@ -124,7 +125,7 @@ input {
         text-align: center;
     }
     
-    .navigation {
+    #navigation {
         text-align: center;
     }
 
