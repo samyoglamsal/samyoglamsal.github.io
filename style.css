@@ -103,7 +103,11 @@ input {
 }
 
 @media only screen and (max-device-width: 640px) {
-    body {
-        background-color: white;
+    .searchOptions {
+        text-align: center;
+    }
+
+    #logo {
+        width: 100px;
     }
 }
