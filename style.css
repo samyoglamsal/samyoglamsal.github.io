@@ -104,7 +104,19 @@ input {
 
 @media only screen and (max-device-width: 640px) {
     h1, h2, p {
-        font-size: 120%;
+        font-size: 300%;
+    }
+
+    button {
+        height: 200%;
+    }
+
+    input {
+        height: 200%
+    }
+
+    ol {
+        text-align: center;
     }
 
     .searchOptions {
