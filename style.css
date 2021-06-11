@@ -50,6 +50,7 @@ button {
     border-radius: 5px;
 
     height: 25px;
+    margin-top: 20px;
 }
 
 input {
@@ -109,15 +110,15 @@ input {
     }
 
     button {
-        font-size: 300%;
+        font-size: 200%;
         height: 65px;
         width: 240;
 
-        margin-bottom: 20px;
+        margin-top: 20px;
     }
 
     input[type="text"] {
-        font-size: 300%;
+        font-size: 200%;
         height: 65px;
         width: 240px;
     }
