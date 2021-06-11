@@ -108,11 +108,12 @@ input {
     }
 
     button {
-        height: 200%;
+        height: 100%;
+        width: auto;
     }
 
     input {
-        height: 200%
+        height: 100%
     }
 
     ol {
@@ -120,6 +121,10 @@ input {
     }
 
     .searchOptions {
+        text-align: center;
+    }
+    
+    .navigation {
         text-align: center;
     }
 
