@@ -103,6 +103,10 @@ input {
 }
 
 @media only screen and (max-device-width: 640px) {
+    h1, h2, p {
+        font-size: 120%;
+    }
+
     .searchOptions {
         text-align: center;
     }
