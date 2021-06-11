@@ -4,24 +4,22 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-    	<script src="display_movie_details.js"></script>
+        <script src="display_movie_details.js"></script>
     </head>
 
     <body>
-	<div class="top">
-       		<h1 id="movie_title"></h1>
-		<h4 id="details"></h4>
-		<h4 id="director"></h4>
-	</div>
+        <div class="top">
+            <h1 id="movieTitle"></h1>
+            <h4 id="details"></h4>
+            <h4 id="director"></h4>
+        </div>
 
-        <img id="poster">
-	
-	<div class="bottom">
-		<h2 class="plot_summary" id="descriptor"> Plot Summary </h2>
-       		<p class="plot_summary" id="plot">
-	</div>
+        <img id="poster" onerror="this.onerror=null; this.remove();">
 
-
+        <div class="bottom">
+            <h2 class="plotSummary" id="descriptor"> Plot Summary </h2>
+            <p class="plotSummary" id="plot">
+        </div>
 
     </body>
 

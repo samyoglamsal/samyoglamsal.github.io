@@ -1,43 +1,38 @@
 <DOCTYPE html>
+
 <html>
-	<head>
-		<link rel="stylesheet" href="style.css">
-                <meta charset="UTF-8">
-		<script src="script.js"></script>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <script src="script.js"></script>
 
-		<title>Movie Search</title>
-	</head>
+        <title>Movie Search</title>
+    </head>
 
-	<body>
-		<div class="top">
-			<img id="logo" src="./logo.png">
-			<h1>Movie Search</h1>
-			<p class="flavor">Get information about your favorite movies 
-		</div>
+    <body>
+        <div class="top">
+            <img id="logo" src="./logo.png">
+            <h1>Movie Search</h1>
+            <p class="flavor">Get information about your favorite movies 
+        </div>
 
-		<div class="input">
-		    <input id="search_box" type="text" placeholder="Movie Title">
-		    <button type="button" id="search_button" onclick="search()">Search</button>
-                </div>
+        <div class="input">
+            <input id="titleBox" type="text" placeholder="Movie Title">
+            <button type="button" id="searchButton" onclick="search()">Search</button>
+        </div>
 
-		<div class="more_options">
-		    <h2>Refine search</h2>
-		    
-		    <input id="year_box" type="text" placeholder="Year (i.e. 2012)">
-		    <br>
-		    <button type="button" id="apply_button" onclick="apply()">Apply</button>
-		</div>
+        <div class="searchOptions">
+            <h2>Search Options</h2>
+            <input id="yearBox" type="text" placeholder="Year (i.e. 2012)">
+        </div>
 
-		<h2 id="results_header" style="visibility:hidden">Results</h2>
-		<ol id="search_results">
-		</ol>
+        <ol id="searchResults">
+        </ol>
 
-                <p id="page_number">
+        <p id="pageNumber">
 
-                <div id="navigation">
-                    <button type="button" style="visibility:hidden" id="prev_button" onclick="change_page('0')">Prev</button>
-                    <button type="button" style="visibility:hidden" id="next_button" onclick="change_page('1')">Next</button>
-                </div>
-	</body>
+        <div id="navigation">
+        </div>
+    </body>
 
 </html>

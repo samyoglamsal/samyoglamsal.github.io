@@ -1,98 +1,112 @@
 * {
-	font-family: Arial;
+    font-family: Arial;
 }
 
-a, a:visited, a:hover {
-	color: white;
+a, a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+    font-size: 20px;
 }
 
 li {
-	color: green;
-	margin: 0;
-	padding 0;
-	list-style-position: inside;
+    color: green;
+    margin: 0;
+    padding 0;
+    list-style-position: inside;
 }
 
 ol {
-	padding: 0;
+    padding: 0;
 }
 
 
 body {
-	background-color: black;
-	padding: 50px;
+    background-color: black;
+    padding: 50px;
 }
 
 h1 {
-	text-align: center;
-	color: #20C20E;
+    text-align: center;
+    color: #20C20E;
 }
 
 p {
-	color: #A9A9A9;
+    color: #A9A9A9;
 }
 
 img {
-	display: block;
-	margin: auto;
+    display: block;
+    margin: auto;
 }
 
 button {
-	background-color: #282828;
-	color: white;
+    background-color: #282828;
+    color: white;
 
-	border: 1px solid white;
-	border-radius: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
 
-	height: 25px;
+    height: 25px;
+}
+
+input {
+    text-align: center;
+
+    border: 1px solid black;
+    border-radius: 7px;
+
+    height: 25px;
 }
 
 .input {
-	text-align: center;
+    text-align: center;
 }
 
 .top {
-	text-align: center;
+    text-align: center;
 }
 
 .top h4 {
-	color: #a9a9a9;
+    color: #a9a9a9;
 }
 
 .bottom {
-	text-align: center;
+    text-align: center;
 }
 
 .bottom h2 {
-	color: #20C20E;
+    color: #20C20E;
 }
 
-.more_options {
-	text-align: right;
+.searchOptions{
+    text-align: right;
 }
 
-.more_options h2 {
-	color: #20C20E;
+.searchOptions h2 {
+    color: #20C20E;
 }
 
-#search_box {
-	text-align: center;
-
-	border: 1px solid black;
-	border-radius: 7px;
-
-	height: 25px;
-}
-
-#results_header {
-	color: #20C20E;
+#resultsHeader {
+    color: #20C20E;
 }
 
 #logo {
-	background: gray;
-	width: 75px;
-	height: auto;
+    background: gray;
+    width: 75px;
+    height: auto;
 
-	border: 1px solid white;
-	border-radius: 100px;
+    border: 1px solid white;
+    border-radius: 100px;
+}
+
+@media only screen and (max-width: 640px) {
+    * {
+        font-family: Arial;
+    }
+    body {
+        background-color: white;
+    }
 }

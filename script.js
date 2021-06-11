@@ -1,85 +1,122 @@
-var api_key = "9803eb11";
-var page_number = 1;
-var navigation_buttons = false;
-var year = -1;
-var total_results;
+var apiKey = "9803eb11";
+var pageNumber = 1;
+var navigationButtons = false;
 
+/* This function will look at the data entered into the "movieTitle" and "year"
+ * search boxes and use that information to gather search results from the
+ * omdbAPI. It will then pass relevant data to updatePage(), which will update
+ * the current page with the relevant search results.
+ */
 function search() {
-    var movie_title = document.getElementById("search_box").value;
+    var movieTitle = document.getElementById("titleBox").value;
+    var year = document.getElementById("yearBox").value;
 
-    document.querySelectorAll('.movie_result').forEach(e => e.remove());
+    document.querySelectorAll('.movieResult').forEach(e => e.remove());
+    document.querySelectorAll('#resultsHeader').forEach(e => e.remove());
 
-    fetch_results(movie_title);
+    fetchResults(movieTitle, year);
 }
 
-function fetch_results(movie_title) {
-    var formatted_movie_title = movie_title.replace(" ", "+");
-    var api_url = `https://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&apikey=${api_key}`;
-    
-    if (year != -1) {
-        api_url = `https://www.omdbapi.com/?s=${formatted_movie_title}&type=movie&page=${page_number}&y=${year}&apikey=${api_key}`;
+function fetchResults(movieTitle, year) {
+    var encodedTitle = encodeURI(movieTitle); 
+    var apiURL = `https://www.omdbapi.com/` +
+        `?s=${encodedTitle}` +
+        `&type=movie` +
+        `&page=${pageNumber}` +
+        `&y=${year}` +
+        `&apikey=${apiKey}`;
 
-    }
+    console.log(apiURL);
 
-    fetch(api_url)
-		.then(function(response) {
-			return response.json();
-		})
-		.then(function(data) {
-			update_page(data);
-		})
-		.catch(function(err) {
-			console.log(err);
-		});
+    fetch(apiURL)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            updatePage(data);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
-/* This function takes in the JSON object obtained from get_movie_data() and
+/* This function takes in the JSON object obtained from getMovieData() and
  * updates the page with the search results contained within that JSON object.
  */
-function update_page(data) {
-        console.log(data);
-	var parent = document.getElementById("search_results");
-	var list_element;
-        var anchor;
+function updatePage(data) {
+    var resultsList = document.getElementById("searchResults");
+    var listElement; 
+    var anchorElement;
+    var resultsTitle;
 
-	total_results = data.totalResults;
+    resultsTitle = document.createElement("h2");
+    resultsTitle.id = "resultsHeader";
+    resultsTitle.innerHTML = "Results";
 
-        document.getElementById("page_number").innerHTML = `Page ${page_number}`;
-	document.getElementById("results_header").style.visibility = "visible";
-        
-        if (data.totalResults > 10 && !navigation_buttons) {
-            document.getElementById("prev_button").style.visibility = "visible";
-            document.getElementById("next_button").style.visibility = "visible";
+    var totalPages = Math.floor(data.totalResults / 10) + 1;
+    if (data.totalResults % 10 == 0) {
+        totalPages--;
+    }
 
-            navigation_buttons = true;
-        }
-	
-	for (var key in data.Search) {
-		list_element = document.createElement("li");
-                list_element.className = "movie_result";
-                anchor = `<a href="#" onclick="redirect(\'${data.Search[key].Title}\')"> ${data.Search[key].Title} (${data.Search[key].Year}) </a>`;
+    document.getElementById("pageNumber").innerHTML = `Page ${pageNumber} of ${totalPages}` +
+    ` (${data.totalResults} results total)`;
 
-		parent.appendChild(list_element);
-		list_element.insertAdjacentHTML("beforeend", anchor);
-	}
+
+    if (data.totalResults > 10 && !navigationButtons) {
+        addNavigationButtons(data.totalResults);
+    }
+
+    for (let key in data.Search) {
+        listElement = document.createElement("li");
+        listElement.className = "movieResult";
+
+        anchorElement = document.createElement("a");
+        anchorElement.onclick = function() {
+            redirect(data.Search[key].Title);
+        };
+        anchorElement.href = "#";
+        anchorElement.innerHTML = `${data.Search[key].Title} (${data.Search[key].Year})`;
+
+        // Add the created elements to the page
+        listElement.appendChild(anchorElement);
+        resultsList.appendChild(listElement);
+    }
+
+    document.getElementById("searchResults").prepend(resultsTitle);
 }
 
-function change_page(direction) {
-    if (direction == 0 && page_number > 1) {
-        page_number--;
-	search();
-    } else if (direction == 1 && page_number < (total_results) / 10) {
-        page_number++;
-	search();
+function changePage(value, totalResults) {
+    if (value == 0 && pageNumber > 1) {
+        pageNumber--;
+        search();
+    } else if (value == 1 && pageNumber < (totalResults) / 10) {
+        pageNumber++;
+        search();
     }
 }
 
-function redirect(title) {
-     sessionStorage.setItem("movie_title", title);
-     window.location.href = "movie_details.html";
+function addNavigationButtons(totalResults) {
+    var navigationDiv = document.getElementById("navigation");
+    var prevButton = document.createElement("button");
+    var nextButton = document.createElement("button");
+
+    prevButton.onclick = function() {
+        changePage(0, totalResults);
+    }
+    prevButton.innerHTML = "Prev";
+
+    nextButton.onclick = function() {
+        changePage(1, totalResults);
+    }
+    nextButton.innerHTML = "Next";
+
+    navigationDiv.appendChild(prevButton);
+    navigationDiv.appendChild(nextButton);
+
+    navigationButtons = true;
 }
 
-function apply() {
-    year = document.getElementById("year_box").value;
-    search();
+function redirect(movieTitle) {
+    sessionStorage.setItem("movieTitle", movieTitle);
+    window.location.href = "movie_details.html";
 }
