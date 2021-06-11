@@ -104,17 +104,18 @@ input {
 
 @media only screen and (max-device-width: 640px) {
     h1, h2, p {
+        text-align: center;
         font-size: 300%;
     }
 
     button {
         height: 65px;
-        width: auto;
+        width: 80px;
     }
 
-    input {
+    input[type="text"] {
         height: 65px;
-        width: auto;
+        width: 80px;
     }
 
     ol {
