@@ -103,17 +103,21 @@ input {
 }
 
 @media only screen and (max-device-width: 640px) {
-    h1, h2, p {
+    h1, h2, h3, h4, p {
         text-align: center;
         font-size: 300%;
     }
 
     button {
+        font-size: 300%;
         height: 65px;
         width: 240;
+
+        margin-bottom: 20px;
     }
 
     input[type="text"] {
+        font-size: 300%;
         height: 65px;
         width: 240px;
     }
