@@ -2,6 +2,16 @@ var apiKey = "9803eb11";
 var pageNumber = 1;
 var navigationButtons = false;
 
+window.onload = setup;
+
+function setup() {
+    document.getElementById("titleBox").onkeypress = function(e) {
+        if (e.keyCode == 13) {
+            document.getElementById("searchButton").click();
+        }
+    }
+}
+
 /* This function will look at the data entered into the "movieTitle" and "year"
  * search boxes and use that information to gather search results from the
  * omdbAPI. It will then pass relevant data to updatePage(), which will update
