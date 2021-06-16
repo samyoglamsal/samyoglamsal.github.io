@@ -18,7 +18,7 @@ function setup() {
     }
 }
 
-function clearResults() {
+function clearResults(resetPageCount) {
     document.querySelectorAll('.movieResult').forEach(e => e.remove());
     document.querySelectorAll('.navigationButton').forEach(e => e.remove());
     document.querySelectorAll('#resultsHeader').forEach(e => e.remove());
@@ -27,7 +27,10 @@ function clearResults() {
     document.getElementById("pageNumber").innerHTML = "";
 
     navigationButtons = false;
-    pageNumber = 1;
+
+    if (resetPageCount) {
+        pageNumber = 1;
+    }
 }
 
 /* This function will look at the data entered into the "movieTitle" and "year"
@@ -35,11 +38,11 @@ function clearResults() {
  * omdbAPI. It will then pass relevant data to updatePage(), which will update
  * the current page with the relevant search results.
  */
-function search() {
+function search(resetPageCount) {
     var movieTitle = document.getElementById("titleBox").value;
     var year = document.getElementById("yearBox").value;
 
-    clearResults();
+    clearResults(resetPageCount);
     
     if (movieTitle == "") {
         showError("Please enter a movie title.");
@@ -136,10 +139,10 @@ function showError(message) {
 function changePage(value, totalResults) {
     if (value == 0 && pageNumber > 1) {
         pageNumber--;
-        search();
+        search(false);
     } else if (value == 1 && pageNumber < (totalResults) / 10) {
         pageNumber++;
-        search();
+        search(false);
     }
 }
 
