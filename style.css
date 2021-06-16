@@ -83,8 +83,20 @@ input {
     color: #20C20E;
 }
 
-.searchOptions{
+.searchOptions {
+    color: #A9A9A9;
     text-align: center;
+
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 250px;
+    
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.searchOptions:hover {
+    color: #BABABA;
 }
 
 .searchOptions h2 {
