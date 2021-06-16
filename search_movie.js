@@ -27,6 +27,7 @@ function clearResults() {
     document.getElementById("pageNumber").innerHTML = "";
 
     navigationButtons = false;
+    pageNumber = 1;
 }
 
 /* This function will look at the data entered into the "movieTitle" and "year"
