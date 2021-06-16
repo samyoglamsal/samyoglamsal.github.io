@@ -38,7 +38,9 @@ function search() {
 
     clearResults();
     
-    if (year != "" && isNaN(year)) {
+    if (movieTitle == "") {
+        showError("Please enter a movie title.");
+    } else if (year != "" && isNaN(year)) {
         showError("Invalid year.");
     } else {
         fetchResults(movieTitle, year);
