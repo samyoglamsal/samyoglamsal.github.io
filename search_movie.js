@@ -25,6 +25,8 @@ function clearResults() {
     document.querySelectorAll('#errorMessage').forEach(e => e.remove());
     
     document.getElementById("pageNumber").innerHTML = "";
+
+    navigationButtons = false;
 }
 
 /* This function will look at the data entered into the "movieTitle" and "year"
