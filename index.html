@@ -1,10 +1,10 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
-        <script src="script.js"></script>
+        <script src="search_movie.js"></script>
 
         <title>Movie Search</title>
     </head>
@@ -18,13 +18,13 @@
 
         <div class="input">
             <input id="titleBox" type="text" placeholder="Movie Title">
-            <br>
-            <button type="button" id="searchButton" onclick="search()">Search</button>
         </div>
 
         <div class="searchOptions">
             <h2>Search Options</h2>
             <input id="yearBox" type="text" placeholder="Year (i.e. 2012)">
+            <br>
+            <button type="button" id="searchButton" onclick="search()">Search</button>
         </div>
 
         <ol id="searchResults">
@@ -33,6 +33,10 @@
         <p id="pageNumber">
 
         <div id="navigation">
+        </div>
+
+        <div id="credits">
+            <p> Samyog Lamsal. Site last updated on 06/16/2021.
         </div>
     </body>
 

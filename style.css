@@ -71,6 +71,7 @@ input {
 }
 
 .top h4 {
+    text-align: center;
     color: #a9a9a9;
 }
 
@@ -83,7 +84,7 @@ input {
 }
 
 .searchOptions{
-    text-align: right;
+    text-align: center;
 }
 
 .searchOptions h2 {
@@ -101,6 +102,14 @@ input {
 
     border: 1px solid white;
     border-radius: 100px;
+}
+
+#credits {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 @media only screen and (max-device-width: 640px) {

@@ -10,6 +10,21 @@ function setup() {
             document.getElementById("searchButton").click();
         }
     }
+
+    document.getElementById("yearBox").onkeypress = function(e) {
+        if (e.keyCode == 13) {
+            document.getElementById("searchButton").click();
+        }
+    }
+}
+
+function clearResults() {
+    document.querySelectorAll('.movieResult').forEach(e => e.remove());
+    document.querySelectorAll('.navigationButton').forEach(e => e.remove());
+    document.querySelectorAll('#resultsHeader').forEach(e => e.remove());
+    document.querySelectorAll('#errorMessage').forEach(e => e.remove());
+    
+    document.getElementById("pageNumber").innerHTML = "";
 }
 
 /* This function will look at the data entered into the "movieTitle" and "year"
@@ -21,10 +36,13 @@ function search() {
     var movieTitle = document.getElementById("titleBox").value;
     var year = document.getElementById("yearBox").value;
 
-    document.querySelectorAll('.movieResult').forEach(e => e.remove());
-    document.querySelectorAll('#resultsHeader').forEach(e => e.remove());
-
-    fetchResults(movieTitle, year);
+    clearResults();
+    
+    if (year != "" && isNaN(year)) {
+        showError("Invalid year.");
+    } else {
+        fetchResults(movieTitle, year);
+    }
 }
 
 function fetchResults(movieTitle, year) {
@@ -36,14 +54,20 @@ function fetchResults(movieTitle, year) {
         `&y=${year}` +
         `&apikey=${apiKey}`;
 
-    console.log(apiURL);
-
     fetch(apiURL)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
-            updatePage(data);
+            if ('Error' in data) {
+                if (data.Error == "Movie not found!") {
+                    showError("The title and/or year you searched for returned no results.");
+                } else if (data.Error == "Too many results.") {
+                    showError("The title you entered was too general. Please specify your search further.");
+                }
+            } else {
+                updatePage(data);
+            }
         })
         .catch(function(err) {
             console.log(err);
@@ -95,6 +119,15 @@ function updatePage(data) {
     document.getElementById("searchResults").prepend(resultsTitle);
 }
 
+function showError(message) {
+    var errorMessage = document.createElement("p");
+
+    errorMessage.id = "errorMessage";
+    errorMessage.innerHTML = message;
+
+    document.getElementById("searchResults").append(errorMessage);
+}
+
 function changePage(value, totalResults) {
     if (value == 0 && pageNumber > 1) {
         pageNumber--;
@@ -114,11 +147,13 @@ function addNavigationButtons(totalResults) {
         changePage(0, totalResults);
     }
     prevButton.innerHTML = "Prev";
+    prevButton.className = "navigationButton";
 
     nextButton.onclick = function() {
         changePage(1, totalResults);
     }
     nextButton.innerHTML = "Next";
+    nextButton.className = "navigationButton";
 
     navigationDiv.appendChild(prevButton);
     navigationDiv.appendChild(nextButton);

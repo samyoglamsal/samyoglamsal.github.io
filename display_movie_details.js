@@ -41,16 +41,45 @@ async function displayDetails() {
     var movieTitle = sessionStorage.getItem("movieTitle");
     var movieInformation = await getMovieData(movieTitle);
 
-    console.log(movieInformation);
+    var releaseDate = movieInformation.Released;
+    if (releaseDate == "N/A") {
+	releaseDate = "Unknown release date";
+    }
+
+    var runtime = movieInformation.Runtime;
+    if (runtime == "N/A") {
+        runtime = "Unknown runtime";
+    }
+
+    var genre = movieInformation.Genre;
+    if (genre == "N/A") {
+        genre = "Unknown genre";
+    }
+
+    var rating = `IMDb rating: ${movieInformation.imdbRating} / 10`;
+    if (rating == "N/A") {
+        rating = "IMDb rating unknown";
+    }
+    
+    var director = `Directed by ${movieInformation.Director}`;
+    if (movieInformation.Director == "N/A") {
+        director = "Unknown director(s)";
+    }
+
+    var plot = movieInformation.Plot;
+    if (plot == "N/A") {
+        plot = "Plot summary unavailable";
+    }
 
     document.getElementById("details").innerHTML = 
-		`${movieInformation.Released} | 
-		 ${movieInformation.Runtime} | 
-		 ${movieInformation.Genre}`;
-    document.getElementById("director").innerHTML = `Directed by ${movieInformation.Director}`;
+		`${releaseDate} | 
+		 ${runtime} | 
+		 ${genre}`;
+    document.getElementById("rating").innerHTML = rating;
+    document.getElementById("director").innerHTML = director;
 
     document.title = movieInformation.Title;
     document.getElementById("movieTitle").innerHTML = movieInformation.Title;
     document.getElementById("poster").src = movieInformation.Poster;
-    document.getElementById("plot").innerHTML = movieInformation.Plot;
+    document.getElementById("plot").innerHTML = plot;
 }
