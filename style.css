@@ -133,6 +133,10 @@ input {
     text-align: center;
 }
 
+#credits p {
+    font-size: 13px;
+}
+
 @media only screen and (max-device-width: 640px) {
     h1, h2, h3, h4, p {
         text-align: center;
