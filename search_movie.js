@@ -4,6 +4,8 @@ var navigationButtons = false;
 
 window.onload = setup;
 
+/* This function allows for the "enter" button to be used to search for
+ * a movie when a text box is selected. */
 function setup() {
     document.getElementById("titleBox").onkeypress = function(e) {
         if (e.keyCode == 13) {
@@ -18,6 +20,10 @@ function setup() {
     }
 }
 
+/* This function removes data that is added programatically. For instance, this
+ * would remove the search results when the search button is pressed, the
+ * page number, the navigation buttons, etc.
+ */
 function clearResults(resetPageCount) {
     document.querySelectorAll('.movieResult').forEach(e => e.remove());
     document.querySelectorAll('.navigationButton').forEach(e => e.remove());
@@ -127,6 +133,10 @@ function updatePage(data) {
     document.getElementById("searchResults").prepend(resultsTitle);
 }
 
+/* This function is used to tell the user that they entered some bad data on
+ * the search page. The error is displayed where the search results would
+ * normally be.
+ */
 function showError(message) {
     var errorMessage = document.createElement("p");
 
@@ -136,6 +146,7 @@ function showError(message) {
     document.getElementById("searchResults").append(errorMessage);
 }
 
+/* This function changes the page number in the search results. */
 function changePage(value, totalResults) {
     if (value == 0 && pageNumber > 1) {
         pageNumber--;
@@ -146,6 +157,9 @@ function changePage(value, totalResults) {
     }
 }
 
+/* This function adds navigation buttons to the bottom of the search results
+ * page. This allows the user to sift through search results when more than 10
+ * are available. */
 function addNavigationButtons(totalResults) {
     var navigationDiv = document.getElementById("navigation");
     var prevButton = document.createElement("button");
@@ -169,6 +183,8 @@ function addNavigationButtons(totalResults) {
     navigationButtons = true;
 }
 
+/* This function redirects the user to the information page of the specific
+ * movie title that they selected. */
 function redirect(movieTitle) {
     sessionStorage.setItem("movieTitle", movieTitle);
     window.location.href = "movie_details.html";

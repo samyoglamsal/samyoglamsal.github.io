@@ -41,6 +41,7 @@ async function displayDetails() {
     var movieTitle = sessionStorage.getItem("movieTitle");
     var movieInformation = await getMovieData(movieTitle);
 
+    /* Handle missing information */
     var releaseDate = movieInformation.Released;
     if (releaseDate == "N/A") {
 	releaseDate = "Unknown release date";
@@ -71,6 +72,7 @@ async function displayDetails() {
         plot = "Plot summary unavailable";
     }
 
+    /* Update the page with the data */
     document.getElementById("details").innerHTML = 
 		`${releaseDate} | 
 		 ${runtime} | 
