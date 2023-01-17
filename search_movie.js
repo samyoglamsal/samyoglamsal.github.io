@@ -2,6 +2,9 @@ var apiKey = "9803eb11";
 var pageNumber = 1;
 var navigationButtons = false;
 
+const test = process.env.REACT_APP_API_KEY;
+console.log(test);
+
 window.onload = setup;
 
 /* This function allows for the "enter" button to be used to search for
