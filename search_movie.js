@@ -2,7 +2,7 @@ var apiKey = "9803eb11";
 var pageNumber = 1;
 var navigationButtons = false;
 
-const test = process.env.REACT_APP_API_KEY;
+const test = process.env.TEST_KEY;
 console.log(apiKey);
 console.log(test);
 
