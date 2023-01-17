@@ -3,6 +3,7 @@ var pageNumber = 1;
 var navigationButtons = false;
 
 const test = process.env.REACT_APP_API_KEY;
+console.log(apiKey);
 console.log(test);
 
 window.onload = setup;
